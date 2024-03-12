@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eng">
+<head>
+    <title>Person List</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+<div class="container mx-auto">
+    <h1 class="text-3xl">Person List</h1>
+    <a href="/add" class="btn btn-primary float-end">Add Person</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${listPersons}">
+            <td th:text="${person.id}"></td>
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.email}"></td>
+            <td><a th:href="@{/edit/{id}(id=${person.id})}" class="btn btn-success">Edit</a></td>
+            <td><a th:href="@{/delete/{id}(id=${person.id})}" class="btn btn-error ">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
