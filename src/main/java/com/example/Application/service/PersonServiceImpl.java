@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Service
 public class PersonServiceImpl implements PersonService{
-    private List<Person> personList = new ArrayList<>();
+    private final List<Person> personList = new ArrayList<>();
 
     @Override
     public List<Person> getAllPersons() {
@@ -23,17 +23,15 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    public Person addPerson(Person person) {
+    public void addPerson(Person person) {
         personList.add(person);
-        return person;
     }
 
     @Override
-    public Person updatePerson(Long id, Person personDetails) {
+    public void updatePerson(Long id, Person personDetails) {
         Person person = getPersonById(id);
         person.setName(personDetails.getName());
         person.setEmail(personDetails.getEmail());
-        return person;
     }
 
     @Override
